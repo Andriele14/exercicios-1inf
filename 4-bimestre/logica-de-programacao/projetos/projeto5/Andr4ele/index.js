@@ -15,7 +15,7 @@ let itensRestantes = producaoFinal
 let caixasNecessarias = 0
 
 do {
-    itensRestantes -= pecasPorCaixa
+    itensRestantes = pecasPorCaixa
     caixasNecessarias++
 } while (itensRestantes > 0)
 
