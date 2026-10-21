@@ -26,18 +26,17 @@ const exemplo = prompt("Digite algo: ")
 ```
 
 - O `prompt` devolve sempre **texto**. Use `Number(prompt(...))` nos valores numéricos.
-- Faça as perguntas **exatamente na ordem do RF01**: os testes automáticos "digitam" as respostas nessa ordem.
+- Faça as perguntas **exatamente na ordem do RF01 e do RF02**: os testes automáticos "digitam" as respostas nessa ordem.
 - O `prompt-sync` já está no `package.json`. Rode `npm install` uma vez e teste seu programa no terminal com `node index.js`.
 - Os testes digitam os valores do cenário principal **e também os de um cenário extra** (veja mais abaixo). Se você deixar valores fixos no código, o cenário extra vai falhar.
 
-## RF01 — Registro das vendas
+## RF01 — Dados da semana
 
 O sistema deve **ler pelo terminal** (com `prompt-sync`), nesta ordem:
 
 1. a quantidade de dias da semana que serão registrados;
-2. a venda de cada dia — um `for` que pergunta uma vez por dia e guarda cada valor no array `vendasDaSemana` com `push`;
-3. a meta de vendas diária;
-4. a meta de vendas da semana.
+2. a meta de vendas diária;
+3. a meta de vendas da semana.
 
 Todos os valores são números: use `Number`.
 
@@ -45,11 +44,6 @@ Para os testes, serão digitados no terminal, nesta ordem, os valores do cenári
 
 ```
 Quantidade de dias: 5
-Venda do dia 1: 150
-Venda do dia 2: 160
-Venda do dia 3: 140
-Venda do dia 4: 170
-Venda do dia 5: 130
 Meta diária: 140
 Meta semanal: 800
 ```
@@ -57,19 +51,27 @@ Meta semanal: 800
 Isso resulta em:
 
 ```
-Vendas da semana: [150, 160, 140, 170, 130]
-Meta diária: 140
-Meta semanal: 800
+quantidadeDeDias = 5
+metaDiaria = 140
+metaSemanal = 800
 ```
 
 ## RF02 — Total vendido na semana
 
-O sistema deve calcular o total vendido na semana, **percorrendo a lista com `for`** e somando cada valor.
+Logo depois do RF01, o sistema deve usar **um `for`** de `1` até a quantidade de dias. A cada repetição, pergunte a venda daquele dia (`Venda do dia 1: `, `Venda do dia 2: `, ...) e some o valor ao total vendido.
 
-Para o cenário principal:
+Para o cenário principal, serão digitados depois das metas:
 
 ```
-Resultado esperado: 750
+Venda do dia 1: 150
+Venda do dia 2: 160
+Venda do dia 3: 140
+Venda do dia 4: 170
+Venda do dia 5: 130
+```
+
+```
+150 + 160 + 140 + 170 + 130 = 750
 ```
 
 ## RF03 — Média de vendas por dia
@@ -83,22 +85,30 @@ media = total vendido / quantidade de dias
 Para o cenário principal:
 
 ```
-Resultado esperado: 150
+750 / 5 = 150
 ```
 
 ## RF04 — Dias acima da meta diária
 
-O sistema deve contar quantos dias tiveram venda **maior ou igual** à meta diária, **usando `for` combinado com `if`**.
+O sistema deve contar quantos dias tiveram venda **maior ou igual** à meta diária, **usando `if` dentro do mesmo `for` do RF02**.
 
 Para o cenário principal:
 
 ```
+150 → conta
+160 → conta
+140 → conta
+170 → conta
+130 → não conta
+
 Resultado esperado: 4
 ```
 
 ## RF05 — Melhor dia de vendas
 
-O sistema deve descobrir o maior valor vendido na semana, **percorrendo a lista com `for`**.
+O sistema deve descobrir o maior valor vendido na semana, **usando `if` dentro do mesmo `for` do RF02**.
+
+Dica: comece com `melhorDia = 0` e, a cada dia, troque o valor se a venda do dia for maior.
 
 Para o cenário principal:
 
@@ -118,13 +128,13 @@ Para o cenário principal:
 Resultado esperado: Meta semanal não atingida
 ```
 
-Crie o arquivo `index.js` que deverá conter a solução desenvolvida por você, lendo os dados com o `prompt-sync` (para conferir, digite no terminal os valores do cenário principal do RF01).
+Crie o arquivo `index.js` que deverá conter a solução desenvolvida por você, lendo os dados com o `prompt-sync` (para conferir, digite no terminal os valores do cenário principal).
 
 No final, cole isso abaixo para que os testes funcionem:
 
 ```jsx
 module.exports = {
-    vendasDaSemana,
+    quantidadeDeDias,
     metaDiaria,
     metaSemanal,
     totalVendido,
@@ -142,13 +152,13 @@ Além do cenário principal, os testes executam o seu programa mais uma vez, com
 
 ```
 Quantidade de dias: 5
+Meta diária: 200
+Meta semanal: 800
 Venda do dia 1: 150
 Venda do dia 2: 200
 Venda do dia 3: 250
 Venda do dia 4: 100
 Venda do dia 5: 50
-Meta diária: 200
-Meta semanal: 800
 ```
 
 Resultado esperado:

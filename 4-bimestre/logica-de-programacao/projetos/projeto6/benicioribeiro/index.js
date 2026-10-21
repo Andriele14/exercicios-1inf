@@ -1,38 +1,28 @@
 const prompt = require("prompt-sync")()
 
 const quantidadeDeDias = Number(prompt("Quantidade de dias: "))
-const vendasDaSemana = []
-
-for (let i = 1; i <= quantidadeDeDias; i++) {
-  vendasDaSemana.push(Number(prompt("Venda do dia " + i + ": ")))
-}
-
 const metaDiaria = Number(prompt("Meta diária: "))
 const metaSemanal = Number(prompt("Meta semanal: "))
 
 let totalVendido = 0
-
-❓ (let i = 0; i < vendasDaSemana.length; i++) {
-  totalVendido = totalVendido + vendasDaSemana[i]
-}
-
-const mediaVendas = totalVendido / vendasDaSemana.length
-
 let diasAcimaDaMeta = 0
+let melhorDia = 0
 
-for (let i = 0; i < vendasDaSemana.length; i++) {
-  ❓ (vendasDaSemana[i] >= metaDiaria) {
+❓ (let dia = 1; dia <= quantidadeDeDias; dia++) {
+  const venda = Number(prompt(`Venda do dia ${dia}: `))
+
+  totalVendido = totalVendido + venda
+
+  ❓ (venda >= metaDiaria) {
     diasAcimaDaMeta = diasAcimaDaMeta + 1
   }
-}
 
-let melhorDia = vendasDaSemana[0]
-
-for (let i = 0; i < vendasDaSemana.length; i++) {
-  if (vendasDaSemana[i] > melhorDia) {
-    melhorDia = vendasDaSemana[i]
+  if (venda > melhorDia) {
+    melhorDia = venda
   }
 }
+
+const mediaVendas = totalVendido / quantidadeDeDias
 
 const situacaoSemana = totalVendido >= metaSemanal ❓ "Meta semanal atingida" ❓ "Meta semanal não atingida"
 
@@ -40,7 +30,7 @@ const resumo = `Total: ${totalVendido}`
 
 // NÃO FAZER NADA ABAIXO DESSA LINHA
 module.exports = {
-  vendasDaSemana,
+  quantidadeDeDias,
   metaDiaria,
   metaSemanal,
   totalVendido,

@@ -13,7 +13,7 @@ function executar(respostas) {
 }
 
 const {
-  vendasDaSemana,
+  quantidadeDeDias,
   metaDiaria,
   metaSemanal,
   totalVendido,
@@ -22,10 +22,10 @@ const {
   melhorDia,
   situacaoSemana,
   resumo
-} = executar(["5", "180", "90", "210", "130", "170", "120", "700"])
+} = executar(["5", "120", "700", "180", "90", "210", "130", "170"])
 
-test("RF01 - deve registrar as vendas da semana", () => {
-  expect(vendasDaSemana).toEqual([180, 90, 210, 130, 170])
+test("RF01 - deve ler a quantidade de dias e as metas", () => {
+  expect(quantidadeDeDias).toBe(5)
   expect(metaDiaria).toBe(120)
   expect(metaSemanal).toBe(700)
 })
@@ -49,12 +49,15 @@ test("RF05 - deve encontrar o melhor dia de vendas", () => {
 test("RF06 - deve informar a situação da semana e o resumo", () => {
   expect(situacaoSemana).toBe("Meta semanal atingida")
   expect(typeof resumo).toBe("string")
+  expect(resumo).toContain("780")
+  expect(resumo).toContain("156")
+  expect(resumo).toContain("Meta semanal atingida")
 })
 
 test("Cenário extra - deve funcionar com outros valores digitados", () => {
-  const extra = executar(["5", "150", "200", "250", "100", "50", "200", "800"])
+  const extra = executar(["5", "200", "800", "150", "200", "250", "100", "50"])
 
-  expect(extra.vendasDaSemana).toEqual([150, 200, 250, 100, 50])
+  expect(extra.quantidadeDeDias).toBe(5)
   expect(extra.metaDiaria).toBe(200)
   expect(extra.metaSemanal).toBe(800)
   expect(extra.totalVendido).toBe(750)

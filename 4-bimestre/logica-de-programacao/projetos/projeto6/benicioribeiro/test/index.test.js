@@ -12,7 +12,7 @@ function executar(respostas) {
   return require("../index.js")
 }
 
-const { totalVendido, mediaVendas, diasAcimaDaMeta, melhorDia, situacaoSemana } = executar(["5", "340", "210", "180", "390", "260", "200", "1300"])
+const { totalVendido, mediaVendas, diasAcimaDaMeta, melhorDia, situacaoSemana } = executar(["5", "200", "1300", "340", "210", "180", "390", "260"])
 
 test("total vendido deve estar correto", () => {
   expect(totalVendido).toBe(1380)

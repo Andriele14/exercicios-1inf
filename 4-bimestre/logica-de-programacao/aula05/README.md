@@ -1,4 +1,4 @@
-# 🎯 Aula 3 — O LOOP `FOR`
+# 🎯 Aula 5 — O LOOP `FOR`
 
 # 🎯 Objetivos da Aula
 
@@ -173,7 +173,7 @@ const dias = Number(prompt("Quantos dias de venda? "))
 let total = 0
 
 for (let dia = 1; dia <= dias; dia++) {
-  const venda = Number(prompt("Venda do dia " + dia + ": "))
+  const venda = Number(prompt(`Venda do dia ${dia}: `))
   total = total + venda
 }
 
