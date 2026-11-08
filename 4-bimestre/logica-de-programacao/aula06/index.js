@@ -1,16 +1,16 @@
 
-const prompt = require("prompt-sync")();
+const prompt = require("prompt-sync")()
 
-const quantidadeTurnos = Number(prompt("Quantos turnos? "));
+const quantidadeTurnos = Number(prompt("Quantos turnos? "))
 
-let turnosAcimaDaMeta = 0;
+let turnosAcimaDaMeta = 0
 
 for (let turno = 1; turno <= quantidadeTurnos; turno++) {
-    const pecas = Number(prompt(`Peças do turno ${turno}: `));
+    const pecas = Number(prompt(`Peças do turno ${turno}: `))
 
     if (pecas > 15) {
-        turnosAcimaDaMeta++;
+        turnosAcimaDaMeta++
     }
 }
 
-module.exports = turnosAcimaDaMeta;
+module.exports = turnosAcimaDaMeta
