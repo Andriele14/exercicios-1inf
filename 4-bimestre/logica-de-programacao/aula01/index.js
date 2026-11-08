@@ -1,12 +1,11 @@
+const prompt = require("prompt-sync")()
 
-const prompt = require("prompt-sync")();
+const meta = Number(prompt("Meta de caixas: "))
 
-const meta = Number(prompt("Meta de caixas: "));
-
-let caixas = 0;
+let caixas = 0
 
 while (caixas < meta) {
-    caixas++;
+    caixas++
 }
 
-module.exports = caixas;
+module.exports = caixas
